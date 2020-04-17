@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="shortcut icon" href="https://raw.githubusercontent.com/curso-r/auth0/master/docs/favicon.ico" type="image/vnd.microsoft.icon" />
+
+	<title>Auth0 and NGINX</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link href="https://getbootstrap.com/docs/4.0/examples/album/album.css" rel="stylesheet">
+
+	<script language="javascript">
+
+		window.onload = function() {
+			var req = new XMLHttpRequest();
+			req.open('GET', document.location, false);
+			req.send(null);
+			var headers = req.getAllResponseHeaders();
+
+			var names = headers.trim().split(/[\r\n]+/);
+
+			headers = "";
+
+			names.forEach(function(name){
+
+				headers += '<li class=list-group-item';
+
+				if (name.includes("x-auth0")) {
+					headers += " style=background-color:yellow";
+				}
+
+				headers += '>'+ name + '</li>';
+			});
+
+			document.getElementById('headers').innerHTML = headers;
+		}
+
+	</script>
+</head>
+
+<body>
+
+	<header>
+<!--       <div class="collapse bg-dark" id="navbarHeader">
+      </div>
+ -->
+		<div class="navbar navbar-dark bg-dark box-shadow">
+			<div class="container d-flex justify-content-between">
+				<a href="#" class="navbar-brand d-flex align-items-center">
+					<span class="oi oi-link-intact"></span>
+					<strong>Auth0 and NGINX</strong>
+				</a>
+<!--           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+ -->        </div>
+		</div>
+	</header>
+
+	<main role="main">
+
+		<section class="jumbotron text-center">
+			<div class="container">
+
+				<h1 class="jumbotron-heading">This page just displays http headers.</h1>
+
+				<div id="myList">
+
+					<ul class="list-group" id="headers"></ul>
+				</div>
+			</div>
+		</section>
+	</main>
+
+<!--
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>
+        <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+        <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
+      </div>
+    </footer> -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="http://getbootstrap.com/docs/4.1/assets/js/vendor/holder.min.js"></script>
+  </body>
+</html>
+
